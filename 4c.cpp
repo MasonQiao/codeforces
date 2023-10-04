@@ -1,9 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool inusernames(string username, string usernames1[], int n1) {
-    for (int i = 0; i < n1; i++) {
-        if (username == usernames1[i]) {
+string usernames[100000], currentusername;
+int n;
+
+bool inusernames(string username) {
+    for (int i = 0; i < n; i++) {
+        if (username == usernames[i]) {
                 return true;
         }
     }
@@ -13,14 +16,11 @@ bool inusernames(string username, string usernames1[], int n1) {
 int main () {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;
-    string currentusername;
-    string usernames[n];
     cin >> n;
     cout << "\n";
     for (int i = 0; i < n; i++) {
         cin >> currentusername;
-        if (!(inusernames(currentusername, usernames, n))) {
+        if (!(inusernames(currentusername))) {
             cout << "OK" << "\n";
             usernames[i] = currentusername;
         }
@@ -29,7 +29,7 @@ int main () {
             while (true) {
                 a++;
                 currentusername = currentusername + to_string(a);
-                if (!(inusernames(currentusername, usernames, n))) {
+                if (!(inusernames(currentusername))) {
                     break;
                 }
             }
