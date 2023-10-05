@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int t, n, k;
+int t, n, k, arr[100], ans;
 
 int main() {
 	ios::sync_with_stdio(false);
@@ -14,12 +14,25 @@ int main() {
 	for (int j = 0; j < t; j++) {
 		cin >> n >> k;
 
-		int ans = 0;
+		arr[0] = 1;
+		arr[n-1] = 1;
 
 		for (int i = 1; i <= n; i++) {
-			ans = max(ans,  2*(i/k + (i%k != 0) - max(0, 2*i - n )));
+            if (i/k + (i%k != 0) >= i) {
+                arr[i-1] = 1;
+                arr[n-i-1] = 1;
+            }
+		}
+
+		ans = 0;
+		for (int i = 0; i < n; i++) {
+            if (arr[i] == 1) {
+                ans++;
+                arr[i] = 0;
+            }
 		}
 		cout << ans << "\n";
 	}
+	return 0;
 }
 
