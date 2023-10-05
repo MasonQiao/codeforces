@@ -1,9 +1,17 @@
-// Source: https://usaco.guide/general/io
-
 #include <bits/stdc++.h>
 using namespace std;
 
 int t, n, k, arr[100], ans;
+
+int ones_before_n(int a) {
+	int counter = 0;
+	for (int i = 0; i < a-1; i++) {
+		if (arr[i] == 1) {
+			counter++;
+		}
+	}
+	return counter;
+}
 
 int main() {
 	ios::sync_with_stdio(false);
@@ -18,9 +26,9 @@ int main() {
 		arr[n-1] = 1;
 
 		for (int i = 1; i <= n; i++) {
-            if (i/k + (i%k != 0) >= i) {
+            if (i/k + (i%k != 0) > ones_before_n(i)) {
                 arr[i-1] = 1;
-                arr[n-i-1] = 1;
+                arr[n-i] = 1;
             }
 		}
 
@@ -35,4 +43,3 @@ int main() {
 	}
 	return 0;
 }
-
