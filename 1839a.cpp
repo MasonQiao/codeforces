@@ -5,7 +5,17 @@ int t, n, k, arr[100], ans;
 
 int ones_before_n(int a) {
 	int counter = 0;
-	for (int i = 0; i < a-1; i++) {
+	for (int i = 0; i <= a; i++) {
+		if (arr[i] == 1) {
+			counter++;
+		}
+	}
+	return counter;
+}
+
+int ones_after_n(int a) {
+	int counter = 0;
+	for (int i = n-1; i >= a; i-=1) {
 		if (arr[i] == 1) {
 			counter++;
 		}
@@ -26,12 +36,13 @@ int main() {
 		arr[n-1] = 1;
 
 		for (int i = 1; i <= n; i++) {
-            if (i/k + (i%k != 0) > ones_before_n(i)) {
+            if (i/k + (i%k != 0) > ones_before_n(i-1)) {
                 arr[i-1] = 1;
-                arr[n-i] = 1;
             }
+			if (i/k + (i%k != 0) > ones_after_n(n-i+1)) {
+				arr[n-i] = 1;
+			}
 		}
-
 		ans = 0;
 		for (int i = 0; i < n; i++) {
             if (arr[i] == 1) {
