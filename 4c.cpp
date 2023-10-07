@@ -6,8 +6,6 @@ int n, currentusername_key;
 map<string, int> usernames;
 
 int main () {
-    hash<string> myhash;
-
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cin >> n;
