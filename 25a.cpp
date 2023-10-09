@@ -10,6 +10,7 @@ int main() {
     for (int i = 0; i < n - 1; i++) {
         cin >> next_number;
         difs[i] = next_number - previous_number;
+        cout << difs[i] << " ";
         if (i + 2 == n) {
             break;
         }
@@ -17,18 +18,7 @@ int main() {
 
     }
 
-    if (n==3) {
-        if (previous_number == next_number) {
-            cout << 1;
-        }
-        else if (difs[0] == -1*difs[1]) {
-            cout << 2;
-        }
-        else {
-            cout << 3;
-        }
-        return 0;
-    }
+
     if (difs[0] != difs[1] && difs[1] == difs[2] && difs[2] == difs[3]) {
         cout << 1;
         return 0;
@@ -37,6 +27,33 @@ int main() {
     if (difs[n-2] != difs[n-3] && difs[n-3] == difs[n-4] && difs[n-4] == difs[n-5]) {
         cout << n;
         return 0;
+    }
+
+
+    if (n==3) {
+        if (previous_number == next_number) {
+            cout << 1;
+            return 0;
+        }
+        else if (difs[0] == -1*difs[1]) {
+            cout << 2;
+            return 0;
+        }
+        else {
+            cout << 3;
+            return 0;
+        }
+    }
+
+    if (n==4) {
+        if ((difs[0] > 0 && difs[1] > 0 && difs[2] < 0) || (difs[0] < 0 && difs[1] < 0 && difs[2] > 0)) {
+            cout << 2;
+            return 0;
+        }
+        if ((difs[0] > 0 && difs[1] < 0 && difs[2] > 0) || (difs[0] < 0 && difs[1] > 0 && difs[2] < 0)) {
+            cout << 3;
+            return 0;
+        }
     }
 
     for (int i = 1; i < n; i++) {
