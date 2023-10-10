@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, a, b, c, arr[3], anwser;
+int n, a, b, c, arr[3], anwser, x;
 
 int main() {
     ios::sync_with_stdio(false);
@@ -12,14 +12,14 @@ int main() {
     a = arr[0];
     b = arr[1];
     c = arr[2];
-    for (int i = n/c; i >= 0; i-=1) {
-        for (int j = 0; j >= 0; j-=1) {
-            for (int k = n/a; k >= 0; k-=1) {
-                if (i*c + j*b + k*a == n) {
-                    anwser = max(anwser, i + j + k);
-                }
+    for (int i = 0; i <= n/c; i ++) {
+        for (int j = 0; j <= n/b; j ++) {
+            x = n - (i*c) - (j*b);
+            if (x%a == 0) {
+                anwser = max(i+j+x/a, anwser);
             }
         }
     }
     cout << anwser;
+    return 0;
 }
