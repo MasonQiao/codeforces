@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, a, b, c, arr[3], anwsers[16000000], array_index;
+int n, a, b, c, arr[3], anwser;
 
 int main() {
     ios::sync_with_stdio(false);
@@ -16,12 +16,10 @@ int main() {
         for (int j = 0; j >= 0; j-=1) {
             for (int k = n/a; k >= 0; k-=1) {
                 if (i*c + j*b + k*a == n) {
-                    anwsers[array_index] = i + j + k;
-                    array_index ++;
+                    anwser = max(anwser, i + j + k);
                 }
             }
         }
     }
-    sort(anwsers, anwsers + array_index+1);
-    cout << anwsers[array_index];
+    cout << anwser;
 }
